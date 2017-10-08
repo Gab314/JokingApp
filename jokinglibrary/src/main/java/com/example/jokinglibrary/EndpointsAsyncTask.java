@@ -1,18 +1,17 @@
 package com.example.jokinglibrary;
 
-
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
+import android.util.Pair;
 import android.widget.Toast;
 
-import com.example.gabriel.myapplication.backendd.myApi.MyApi;
+import com.example.gabriel.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
 import java.io.IOException;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
