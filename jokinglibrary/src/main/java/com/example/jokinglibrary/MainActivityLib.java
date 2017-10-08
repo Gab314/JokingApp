@@ -28,11 +28,11 @@ public class MainActivityLib extends AppCompatActivity {
             }
         });
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this,"Gabe"));
+
     }
 
     public void tellJoke(String s) {
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this,s));
     }
 
 
