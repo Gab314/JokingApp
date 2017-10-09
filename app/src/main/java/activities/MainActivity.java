@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchLibraryActivity() {
         Intent myIntent = new Intent(this, MainActivityLib.class);
+        myIntent.putExtra("Flavor","Free");
         startActivity(myIntent);
     }
 }

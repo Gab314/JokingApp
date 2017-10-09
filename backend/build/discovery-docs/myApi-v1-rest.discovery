@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/YqSMWpsUeNbPqt-GBXoKw6deIxg\"",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/rTk_KdcPXZQKE5gNEEmzleyO8YU\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -84,8 +84,8 @@
   }
  },
  "methods": {
-  "sayHi": {
-   "id": "myApi.sayHi",
+  "sayJoke": {
+   "id": "myApi.sayJoke",
    "path": "{name}",
    "httpMethod": "POST",
    "parameters": {
