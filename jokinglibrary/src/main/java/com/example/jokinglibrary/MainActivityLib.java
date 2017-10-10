@@ -42,6 +42,7 @@ public class MainActivityLib extends AppCompatActivity {
             adView.setAdSize(AdSize.BANNER);
             adView.setAdUnitId(getResources().getString(R.string.ad_unit_ID));
             AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice("FA5C3D05F5DDEC54A5BF17167DA7F124")
                     .build();
             adView.loadAd(adRequest);
         }
