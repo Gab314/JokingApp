@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 
 android {
     signingConfigs {
@@ -23,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
         debug {
             signingConfig signingConfigs.config
@@ -33,10 +34,12 @@ android {
         free {
             applicationId "com.example.gabriel.jokingapp.free"
             dimension = "bai"
+            signingConfig signingConfigs.config
         }
         paid {
             applicationId "com.example.gabriel.jokingapp.paid"
             dimension = "bai"
+            signingConfig signingConfigs.config
         }
     }
     dexOptions {
@@ -51,10 +54,11 @@ dependencies {
     })
     compile project(':jokinglibrary')
     compile project(':lib')
+    compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
-    freeCompile 'com.google.android.gms:play-services:9.0.0'
-    compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:multidex:1.0.1'
-
+    //freeCompile 'com.google.firebase:firebase-ads:10.0.1'
+    freeCompile 'com.google.android.gms:play-services-ads:11.0.4'
 }
+apply plugin: 'com.google.gms.google-services'

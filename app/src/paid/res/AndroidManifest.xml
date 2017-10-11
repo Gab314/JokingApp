@@ -12,11 +12,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:label">
 
         <activity
-            android:name="activities.MainActivity"
-            android:label="@string/app_name">
+            android:name=".paid.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
