@@ -19,20 +19,27 @@ import com.google.android.gms.ads.AdView;
 
 public class MainActivityLib extends AppCompatActivity {
     AdView adView;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
-
-        setContentView(R.layout.activity_main_lib);
-        Button button = (Button) findViewById(R.id.activity_main_btn);
         Intent intent = getIntent();
 
         String flavor = intent.getStringExtra("Flavor");
         Joker joker = new Joker();
         final String joke = joker.getJoke();
+
+        if (flavor.equals("Free")){
+            setContentView(R.layout.activity_main_lib);
+           button = (Button) findViewById(R.id.activity_main_btn);
+        }
+        if (flavor.equals("Paid")){
+            setContentView(R.layout.activity_main_lib_paid);
+            button = (Button) findViewById(R.id.activity_main_btn_paid);
+        }
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
