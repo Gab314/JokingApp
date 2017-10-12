@@ -8,29 +8,38 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.gabriel.jokes.Joker;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
 
 public class MainActivityLib extends AppCompatActivity {
     AdView adView;
+    AdRequest adRequest;
     Button button;
+    String joke, flavor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
 
-        String flavor = intent.getStringExtra("Flavor");
-        Joker joker = new Joker();
-        final String joke = joker.getJoke();
+        if (savedInstanceState == null){
+            Intent intent = getIntent();
 
+            flavor = intent.getStringExtra("Flavor");
+            Joker joker = new Joker();
+            joke = joker.getJoke();
+        }
+        if (savedInstanceState != null){
+            joke = savedInstanceState.getString("JOKE");
+            flavor = savedInstanceState.getString("FLAVOR");
+        }
+
+
+        assert flavor != null;
         if (flavor.equals("Free")){
             setContentView(R.layout.activity_main_lib);
            button = (Button) findViewById(R.id.activity_main_btn);
@@ -50,9 +59,9 @@ public class MainActivityLib extends AppCompatActivity {
 
         if (flavor.equals("Free")){
             adView = (AdView) findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder()
+            adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)// This is for emulators
-                    .addTestDevice("FA5C3D05F5DDEC54A5BF17167DA7F124")
+                    //.addTestDevice("")
                     .build();
             adView.loadAd(adRequest);
 
@@ -97,8 +106,16 @@ public class MainActivityLib extends AppCompatActivity {
     protected void onPause() {
         if (adView != null) {
             adView.pause();
-            super.onPause();
+
         }
+        super.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("JOKE", joke);
+        savedInstanceState.putString("FLAVOR", flavor);
     }
 
     @Override
